@@ -6,7 +6,7 @@
   <meta name="description" content="Frontend Developer & UI Designer">
 
   <link rel="apple-touch-icon" sizes="180x180" href="https://res.cloudinary.com/ddkucvkg0/image/upload/v1520898511/portfolio/apple-touch-icon.png?v=PY43Q9Ba9A">
-  <link rel="icon" type="image/png" sizes="32x32" href="https://res.cloudinary.com/ddkucvkg0/image/upload/v1520899195/favicon-32.png.png?v=PY43Q9Ba9A">
+  <link rel="icon" type="image/png" sizes="32x32" href="https://res.cloudinary.com/ddkucvkg0/image/upload/v1520899195/favicon-32.png?v=PY43Q9Ba9A">
   <link rel="icon" type="image/png" sizes="16x16" href="https://res.cloudinary.com/ddkucvkg0/image/upload/v1520899195/favicon-16.png?v=PY43Q9Ba9A">
   <link rel="manifest" href="/site.webmanifest?v=PY43Q9Ba9A">
   <link rel="mask-icon" href="https://res.cloudinary.com/ddkucvkg0/image/upload/v1520898512/portfolio/safari-pinned-tab.svg?v=PY43Q9Ba9A" color="#111111">
@@ -34,7 +34,7 @@
     }
 
     .logo {
-      color: hsl(0, 50%, var(--hsl-light));
+      color: hsl(180, 75%, 45%);
       background-color: var(--bg);
       fill: currentColor;
       border: 4px solid currentColor;
@@ -105,29 +105,38 @@
     };
     let logo;
 
-    document.addEventListener('mousemove', (e) => {
-      const hue = Math.floor(e.clientX/adjustment.x);
-      const saturation = Math.floor(e.clientY/adjustment.y) + 50;
-      let light = 35;
-      if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
-        light = 85;
-      }
-      logo.style.color = `hsl(${hue}, ${saturation}%, ${light}%`;
-    });
-
     document.addEventListener('DOMContentLoaded', () => {
-      logo = document.getElementById('logo');
-      setAdjustment();
+      if(!isTouchDevice()) {
+        logo = document.getElementById('logo');
+        setAdjustment();
+        initColorEffectListeners();
+      }
     });
 
-    window.addEventListener('resize', () => {
-      setAdjustment();
-    });
+    function initColorEffectListeners() {
+      document.addEventListener('mousemove', (e) => {
+        const hue = Math.floor(e.clientX/adjustment.x);
+        const saturation = Math.floor(e.clientY/adjustment.y) + 50;
+        let light = 35;
+        if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+          light = 85;
+        }
+        logo.style.color = `hsl(${hue}, ${saturation}%, ${light}%`;
+      });
+
+      window.addEventListener('resize', () => {
+        setAdjustment();
+      });
+    }
 
     function setAdjustment() {
       adjustment.x = window.innerWidth/360;
       adjustment.y = window.innerHeight/50;
     }
+
+    function isTouchDevice() {
+      return !!('ontouchstart' in window || navigator.maxTouchPoints);
+    };
   </script>
 </body>
 </html>
