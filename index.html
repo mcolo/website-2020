@@ -14,14 +14,14 @@
   <meta name="apple-mobile-web-app-title" content="Max Miracolo">
   <meta name="application-name" content="Max Miracolo">
   <meta name="msapplication-TileColor" content="#1A202C">
-  <meta name="theme-color" media="(prefers-color-scheme: light)" content="#ffffff" />
+  <meta name="theme-color" media="(prefers-color-scheme: light)" content="#f8fafc" />
   <meta name="theme-color" media="(prefers-color-scheme: dark)" content="#1A202C" />
 
   <title>Max Miracolo: Front End Engineer</title>
 
   <style>
     :root {
-      --text: #fff;
+      --text: #f8fafc;
       --bg: #1A202C;
     }
 
@@ -62,7 +62,11 @@
     @media (prefers-color-scheme: light) {
       :root {
         --text: #1A202C;
-        --bg: #fff;
+        --bg: #f8fafc;
+      }
+
+      .logo {
+        color: hsl(180, 100%, 45%);
       }
     }
   </style>
@@ -134,7 +138,7 @@
         const hue = Math.max(yratio, xratio);
         let light = 75;
         if (prefersLightScheme()) {
-          light = 35;
+          light = 45;
         }
         logo.style.color = `hsl(${hue} 100% ${light}%)`;
       });
