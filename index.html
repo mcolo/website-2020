@@ -83,43 +83,65 @@
   </nav>
 
   <script>
-    const adjustment = {
-      x: 0,
-      y: 0,
-    };
+    const hueIncrement = { x:0, y:0 };
+    const logoMidpoint = { x:0, y:0 };
     let logo;
 
     document.addEventListener('DOMContentLoaded', () => {
-      if(!isTouchDevice()) {
+      if (isTouchDevice() || prefersReducedMotion()) return;
         logo = document.getElementById('logo');
         setAdjustment();
-        initColorEffectListeners();
-      }
+        initColorEffect();
+        set3DAdjustment();
+        init3DTileEffect();
     });
 
     function isTouchDevice() {
       return !!('ontouchstart' in window || navigator.maxTouchPoints);
     };
 
-    function setAdjustment() {
-      adjustment.x = window.innerWidth/360;
-      adjustment.y = window.innerHeight/360;
+    function prefersReducedMotion() {
+      return window.matchMedia('(prefers-reduced-motion: reduce)').matches;
     }
 
-    function initColorEffectListeners() {
+    function prefersLightScheme() {
+      return window.matchMedia('(prefers-color-scheme: light)').matches;
+    }
+
+    function setAdjustment() {
+      hueIncrement.x = window.innerWidth/360;
+      hueIncrement.y = window.innerHeight/360;
+    }
+
+    function set3DAdjustment() {
+      const {width, height, top, left} = logo.getBoundingClientRect();
+      logoMidpoint.x = left + (width/2);
+      logoMidpoint.y = top + (height/2);
+    }
+
+    function init3DTileEffect() {
       document.addEventListener('mousemove', (e) => {
-        const yratio = Math.floor(e.clientY/adjustment.y);
-        const xratio = Math.floor(e.clientX/adjustment.x);
+        const xDistort = ((logoMidpoint.x - e.clientX)/logoMidpoint.x) * -0.0015;
+        const yDistort = Math.min(((logoMidpoint.y - e.clientY)/logoMidpoint.y) * -0.0015, 0.0015);
+        logo.style.transform = `matrix3d(1,0,0,${xDistort},0,1,0,${yDistort},0,0,1,0,0,0,0,1)`;
+      });
+    }
+
+    function initColorEffect() {
+      document.addEventListener('mousemove', (e) => {
+        const yratio = Math.floor(e.clientY/hueIncrement.y);
+        const xratio = Math.floor(e.clientX/hueIncrement.x);
         const hue = Math.max(yratio, xratio);
         let light = 75;
-        if (window.matchMedia('(prefers-color-scheme: light)').matches) {
+        if (prefersLightScheme()) {
           light = 35;
         }
-        logo.style.color = `hsl(${hue}, 100%, ${light}%`;
+        logo.style.color = `hsl(${hue} 100% ${light}%)`;
       });
 
       window.addEventListener('resize', () => {
         setAdjustment();
+        set3DAdjustment();
       });
     }
   </script>
