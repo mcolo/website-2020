@@ -1,0 +1,266 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width,initial-scale=1.0">
+  <meta name="description" content="Max Miracolo: Front End Engineer">
+
+  <link rel="apple-touch-icon" sizes="180x180" href="https://res.cloudinary.com/ddkucvkg0/image/upload/v1520898511/portfolio/apple-touch-icon.png?v=PY43Q9Ba9A">
+  <link rel="icon" type="image/png" sizes="32x32" href="https://res.cloudinary.com/ddkucvkg0/image/upload/v1520899195/favicon-32.png?v=PY43Q9Ba9A">
+  <link rel="icon" type="image/png" sizes="16x16" href="https://res.cloudinary.com/ddkucvkg0/image/upload/v1520899195/favicon-16.png?v=PY43Q9Ba9A">
+  <link rel="manifest" href="/site.webmanifest?v=PY43Q9Ba9A">
+  <link rel="mask-icon" href="https://res.cloudinary.com/ddkucvkg0/image/upload/v1520898512/portfolio/safari-pinned-tab.svg?v=PY43Q9Ba9A" color="#1A202C">
+  <meta name="apple-mobile-web-app-title" content="Max Miracolo">
+  <meta name="application-name" content="Max Miracolo">
+  <meta name="msapplication-TileColor" content="#1A202C">
+  <meta name="theme-color" media="(prefers-color-scheme: light)" content="#f8fafc" />
+  <meta name="theme-color" media="(prefers-color-scheme: dark)" content="#1A202C" />
+
+  <title>Max Miracolo: Front-End Engineer</title>
+
+  <style>
+    /*
+      Josh's Custom CSS Reset
+      https://www.joshwcomeau.com/css/custom-css-reset/
+    */
+    *, *::before, *::after {
+      box-sizing: border-box;
+    }
+
+    * {
+      margin: 0;
+    }
+
+    body {
+      line-height: 1.5;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    img, picture, video, canvas, svg {
+      display: block;
+      max-width: 100%;
+    }
+
+    input, button, textarea, select {
+      font: inherit;
+    }
+
+    p, h1, h2, h3, h4, h5, h6 {
+      overflow-wrap: break-word;
+    }
+
+    p {
+      text-wrap: pretty;
+    }
+    h1, h2, h3, h4, h5, h6 {
+      text-wrap: balance;
+    }
+
+    #root, #__next {
+      isolation: isolate;
+    }
+    /* End Reset */
+
+    :root {
+      --bg: #f8fafc;
+      --fg: #020617;
+      --link: #1d4ed8;
+      --visited: #6d28d9;
+      --logo: #020617;
+    }
+
+    @media (prefers-color-scheme: dark) {
+      :root {
+        --bg: #020617;
+        --fg: #f8fafc;
+        --link: #3b82f6;
+        --visited: #a78bfa;
+        --logo: #f8fafc;
+      }
+    }
+
+    body {
+      font-family: Seravek, 'Gill Sans Nova', Ubuntu, Calibri, 'DejaVu Sans', source-sans-pro, sans-serif; 
+      font-weight: normal;
+      background-color: var(--bg);
+    }
+
+    .container {
+      max-width: 50rem;
+      padding: 0 2rem;
+      margin: 2rem auto 7rem;
+    }
+
+    .logo {
+      width: 4rem;
+      height: 4rem;
+      border: .125rem solid var(--logo);
+      color: var(--logo);
+      background-color: currentColor;
+      border-radius: .375rem;
+      transition: 250ms cubic-bezier(.5,.8,.5,2);
+      /* -webkit-touch-callout: none; */
+      /* box-shadow: 0 0 20px rgb(from var(--bg) r g b / 0.9); */
+    }
+
+    .logo path {
+      fill: var(--bg);
+    }
+
+    main {
+      margin: 1.5rem 0 0;
+    }
+
+    p {
+      color: var(--fg);
+      margin: 0 0 1.5rem;
+      font-size: 1.375rem;
+      font-weight: 500;
+      line-height: 1.125;
+    }
+
+    .link {
+      color: var(--link);
+    }
+
+    .link:hover {
+      text-decoration: none;
+    }
+
+    .link:visited {
+      color: var(--visited);
+    }
+
+    header {
+      position: relative;
+    }
+
+    header .logo:first-child {
+      position: relative;
+    }
+
+    header .logo:not(:first-child) {
+      position: absolute;
+      top: 0;
+    }
+
+    .logo:active {
+      transform: scale(.95);
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <header id="header">
+      <svg id="logo" class="logo" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+        <path d="M48.9 79.3c-.1-.4-.5-8.2-.8-17.3l-.6-16.5-2.3 8.9c-1.2 4.8-3.2 11-4.3 13.7-1.9 4.3-2.5 4.9-5 4.9-3.8 0-4.6-2.2-6.6-16.5C27.6 43.3 27.2 41.9 26 44c-.9 1.7-7.7 28.2-8.2 32-.4 3-3.5 3.4-5.2.7-.9-1.3-.1-5.7 3.5-20C21.6 35.4 24.9 27 27.9 27s3.6 2 6.2 18.8c1.3 8.4 2.6 14.7 3 14 .4-.7 2.1-7.1 3.8-14.3C45.7 25.7 46.7 23 49.5 23c1.2 0 2.6.7 2.9 1.6s.9 7.7 1.3 15.2l.6 13.6L57 45c3.4-10.9 4.8-13.2 8-12.8 3.1.4 3.8 2.8 3.9 14.7.1 5.2.4 9.2.7 8.8.3-.3 1.6-5.4 2.9-11.4 2.5-11.9 5.8-21.5 8-23.3.8-.6 2.4-1 3.7-.8l2.3.3v56l-2.2.3c-1.3.2-2.5-.4-3.1-1.5-.5-1-.9-9.8-.8-19.5 0-9.7 0-17.5-.2-17.3-.1.1-1.4 6-2.7 13.1-3 15.7-4.1 19.1-6.4 20.4-4 2.1-6.6-3.3-7.9-16l-.8-7.5L59.7 59c-5.7 21.9-5.2 20.5-8.1 20.8-1.4.2-2.7 0-2.7-.5z"></path>
+      </svg>
+    </header>
+    <main>
+      <p>Hi, I'm Max Miracolo, a front-end software engineer. You can find me on <a href="https://www.linkedin.com/in/maxmiracolo" class="link">linkedin</a>, <a href="https://github.com/mcolo" class="link">github</a>, and <a href="https://codepen.io/mcolo" class="link">codepen</a>.</p>
+      <p>My current projects are <a class="link" href="https://starcrossed.today">starcrossed.today</a> and <a class="link" href="https://costars.xyz">costars.xyz</a>.</p>
+      <p>Send me an email at <a class="link" href="mailto:maxmiracolo@proton.me">maxmiracolo@proton.me</a>.</p>
+    </main>
+  </div>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const lightLinkColors = ['#fbbf24', '#4ade80', '#22d3ee', '#94a3b8', '#fb7185'];
+      const darkLinkColors = ['#047857', '#0e7490', '#334155', '#a21caf', '#be123c'];
+      const logo = document.getElementById('logo');
+      const header = document.getElementById('header');
+      let count = 0;
+      logo.addEventListener('click', () => {
+        const adjustment = (90 - (count * 5));
+        const randomIndex = Math.floor(Math.random() * 4.99);
+        const clone = logo.cloneNode(true);
+        if (prefersLightScheme()) {
+          clone.style.filter = `contrast(${adjustment}%) brightness(${4 - (adjustment/33)})`;
+        } else {
+          clone.style.filter = `brightness(${(adjustment/100) - .05})`;
+        }
+        if (adjustment < 0) {
+          count = 0;
+          document.querySelectorAll('.logo:not(#logo)').forEach((el) => el.remove());
+          document.body.style.setProperty('--link', prefersLightScheme() ? darkLinkColors[randomIndex] : lightLinkColors[randomIndex]);
+          return;
+        }
+        clone.id = count++;
+        clone.style.left = (count * (30-count)) + 'px';
+        clone.style.zIndex = 0 - count;
+        clone.style.transform = `scale(${adjustment/100})`;
+        header.appendChild(clone);
+      });
+    });
+
+    function prefersLightScheme() {
+      return window.matchMedia('(prefers-color-scheme: light)').matches;
+    }
+  </script>
+
+  <!-- <script>
+    const hueIncrement = { x:0, y:0 };
+    const logoMidpoint = { x:0, y:0 };
+    let logo;
+
+    document.addEventListener('DOMContentLoaded', () => {
+      if (isTouchDevice() || prefersReducedMotion()) return;
+        logo = document.getElementById('logo');
+        setAdjustment();
+        initColorEffect();
+        set3DAdjustment();
+        init3DTileEffect();
+    });
+
+    function isTouchDevice() {
+      return !!('ontouchstart' in window || navigator.maxTouchPoints);
+    };
+
+    function prefersReducedMotion() {
+      return window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    }
+
+    function prefersLightScheme() {
+      return window.matchMedia('(prefers-color-scheme: light)').matches;
+    }
+
+    function setAdjustment() {
+      hueIncrement.x = window.innerWidth/60;
+      hueIncrement.y = window.innerHeight/60;
+    }
+
+    function set3DAdjustment() {
+      const {width, height, top, left} = logo.getBoundingClientRect();
+      logoMidpoint.x = left + (width/2);
+      logoMidpoint.y = top + (height/2);
+    }
+
+    function init3DTileEffect() {
+      document.addEventListener('mousemove', (e) => {
+        const xDistort = ((logoMidpoint.x - e.clientX)/logoMidpoint.x) * -0.0005;
+        const yDistort = Math.min(((logoMidpoint.y - e.clientY)/logoMidpoint.y) * -0.00025, 0.00025);
+        logo.style.transform = `matrix3d(1,0,0,${xDistort},0,1,0,${yDistort},0,0,1,0,0,0,0,1)`;
+      });
+    }
+
+    function initColorEffect() {
+      document.addEventListener('mousemove', (e) => {
+        const yratio = Math.floor(e.clientY/hueIncrement.y);
+        const xratio = Math.floor(e.clientX/hueIncrement.x);
+        const hue = Math.max(yratio, xratio);
+        let light = 40;
+        if (prefersLightScheme()) {
+          light = 45;
+        }
+        logo.style.color = `hsl(${150+hue} 100% ${light}%)`;
+      });
+
+      window.addEventListener('resize', () => {
+        setAdjustment();
+        set3DAdjustment();
+      });
+    }
+  </script> -->
+</body>
+</html>
